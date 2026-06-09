@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "./providers/AuthProvider";
 
 
 const inter = Inter({
@@ -21,8 +22,13 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Vector",
-  description: "",
+  title: "Vector | AI-Powered Goal Tracking & Accountability",
+  description:   "AI-powered roadmaps and goal-focused communities to help you stay accountable and achieve more.",
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "192x192" },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -35,7 +41,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jakarta.variable} ${instrument.variable} bg-[#070b0a] text-white antialiased`}
       >
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
